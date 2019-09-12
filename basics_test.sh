@@ -15,3 +15,16 @@ V=1
 done )> data.txt
 
 python get_column_stats.py data.txt 2
+
+(for i in `seq 1 100`; do 
+    echo -e "$RANDOM\t$RANDOM\t$RANDOM\t$RANDOM\t$RANDOM";
+done )> data.txt
+
+python get_column_stats.py data.txt 5
+
+
+(for i in `seq 1 100`; do 
+    echo -e "$RANDOM\t$RANDOM\t$RANDOM\t$RANDOM\t$RANDOM";
+done )> data.txt
+
+python get_column_stats.py data.txt a
