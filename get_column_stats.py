@@ -1,19 +1,47 @@
-import sys, math
+import sys
+import math
+import argparse
+import csv
 
-file_name = sys.argv[1]
-col_num = int(sys.argv[2])
+# argparse setup
+parser = argparse.ArgumentParser(description="Specify col for std, mean calc")
+parser.add_argument('file', type=str, help='specify files')
+parser.add_argument('col_num', type=str, help='choose column num, start at 0')
+args = parser.parse_args()
+
+# setting files name
+file_name = args.file  # set file name
+
+# checking to see if user input is integer
+try:
+    int(args.col_num)
+    col_num = int(args.col_num)
+except Exception:
+    print('Must specify integer for col num')
+    sys.exit(1)
+
 
 f = open(file_name, 'r')
-
 V = []
 
-for l in f:
-    A = [int(x) for x in l.split()]
-    V.append(A[col_num])
 
-mean = sum(V)/len(V)
+def main():
+    for l in f:
+        A = [int(x) for x in l.split()]
+        # check if user input is in range
+        try:
+            V.append(A[col_num])
+        except Exception:
+            print('Col number out of bounds')
+            sys.exit(1)
 
-stdev = math.sqrt(sum([(mean-x)**2 for x in V]) / len(V))
+    mean = sum(V)/len(V)
 
-print('mean:', mean)
-print('stdev:', stdev)
+    stdev = math.sqrt(sum([(mean-x)**2 for x in V]) / len(V))
+
+    print('mean:', mean)
+    print('stdev:', stdev)
+
+
+if __name__ == '__main__':
+    main()
