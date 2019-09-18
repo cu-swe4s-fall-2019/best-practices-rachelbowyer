@@ -39,7 +39,7 @@ python get_column_stats.py data.txt a
 
 #below is assigment 2 code
 
-test -e ssshtest || wget -qhttps://raw.githubusercontent.com/ryanlayer/ssshtest/master/ssshtest
+test -e ssshtest || wget -q https://raw.githubusercontent.com/ryanlayer/ssshtest/master/ssshtest
 . ssshtest
 
 # the below tests use file full of random numbers
